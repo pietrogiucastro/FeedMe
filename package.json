@@ -5,11 +5,13 @@
   "author": "Pietro Giucastro",
   "license": "MIT",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "forever": "forever start -a -l /var/log/FeedMe/logfile.log -o /var/log/FeedMe/outfile.log -e /var/log/FeedMe/errfile.log ./bin/www"
   },
   "dependencies": {
     "express": "^4.14.1",
     "ejs": "~2.5.2",
-    "ejs-lint": "*"
+    "ejs-lint": "*",
+    "body-parser": "*"
   }
 }

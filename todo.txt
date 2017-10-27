@@ -1,0 +1,1 @@
+fix </script> that closes tag parent tag script
