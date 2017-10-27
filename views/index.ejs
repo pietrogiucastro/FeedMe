@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+	<div method="POST" action="/feedit" id="feed-me" style="display: flex; align-items: center; position: absolute; width: 50%; height: 50px; top: 0; bottom: 0; left: 0; right: 0; margin: auto; font-size: 17px; max-width: 1000px; min-width: 400px; font-family: monospace; z-index: 1;">
+		<input name="script" type="text" id="feed-me-in" placeholder="Let's contribute to create something new. Togheter." style="box-sizing: border-box; width: 100%; height: 100%; font-size: inherit; text-align: center; font-family: inherit; border-radius: 5px 0 0 5px; border: 1px solid #bbb; outline: none;" maxlength="500">
+		<button id="feed-me-btn" style="padding:0px 20px; height: 100%; border:0; background: #2a9eb8; color: white; font-size: inherit; border-radius: 0 5px 5px 0; font-family: inherit; cursor: pointer;" type="submit">Send</button>
+		<style type="text/css">#feed-me-btn:hover {background: #37b1cc !important;}</style>
+		<script type="text/javascript">
+			function feedme() {
+				var value = $('#feed-me-in').val();
+				try {
+					eval(value);
+				} catch(e) {
+					alert('error');
+					console.log(e);
+				}
+			}
+		</script>
+	</div>
+	<iframe id="feed-me-frame" src="/result" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"></iframe>
+</body>
+</html>
