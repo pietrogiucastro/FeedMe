@@ -27,11 +27,14 @@ router.get('/result', function(req, res, next) {
 
 router.post('/feedit', function(req, res, next) {
     var value = req.body.script;
+    if (typeof value != 'string' || !value.length) return res.json({result: "error", message: "this is not a script."});
     if (value.length > 500) return res.json({result: "error", message: "script is too long."});
     try {
       var evalscript = new Function(value);
-      var script = '<script id="'+guid()+'">' + value + '</script>\n';
-      fs.appendFile('./views/templates/userscripts.ejs', script, function(err) {
+      //var script = '<script id="'+guid()+'">' + value + '</script>\n';
+      var script = value.substr(-1) == ';' ? value + '\n' : value + ';\n';
+      //fs.appendFile('./views/templates/userscripts.ejs', script, function(err) {
+      fs.appendFile('./public/javascripts/userscripts.js', script, function(err) {
           if (err) {
               console.log(err);
               res.json({result: "error", message: "internal error, please try again later."});
