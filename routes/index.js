@@ -32,7 +32,8 @@ router.post('/feedit', function(req, res, next) {
     try {
       var evalscript = new Function(value);
       //var script = '<script id="'+guid()+'">' + value + '</script>\n';
-      var script = value.substr(-1) == ';' ? value + '\n' : value + ';\n';
+      //var script = value.substr(-1) == ';' ? value + '\n' : value + ';\n';
+      var script = 'try {'+value+'} catch(e) {}\n';
       //fs.appendFile('./views/templates/userscripts.ejs', script, function(err) {
       fs.appendFile('./public/javascripts/userscripts.js', script, function(err) {
           if (err) {
